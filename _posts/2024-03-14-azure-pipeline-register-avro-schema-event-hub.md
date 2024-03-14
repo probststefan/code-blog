@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Streamlining Azure Pipelines: Automating Avro Schema Publication to Event Hubs Schema Registry
+title: Streamlining Azure Pipelines\: Automating Avro Schema Publication to Event Hubs Schema Registry
 ---
 ```bash
 - task: AzureCLI@2
