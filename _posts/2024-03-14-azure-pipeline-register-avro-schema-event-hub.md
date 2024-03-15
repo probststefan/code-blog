@@ -22,3 +22,21 @@ At present, the Azure CLI does not provide a means to upload schemas into the Ev
 ```
 
 Using the AzureCLI@2 Tasks along with a Service Connection, we have the capability to execute `az` commands and obtain an access token for the *.servicebus.windows.net resource. With this token, it becomes feasible to pump Avro files into the registry.
+
+In a further step, I expanded the script to include the capability of reading Avro files from a directory.
+
+```bash
+response=$(az account get-access-token --resource https://<Namespace_Name>.servicebus.windows.net)
+
+token="Bearer `echo $response | jq ."accessToken" | tr -d '"'`"
+
+for file in *.avro; do
+  avro_data=$(cat "$file")     
+  schema_name="${file%.*}"
+
+  echo "Publishing $file to schema registry <Namespace_Name>"
+  echo "Content: $avro_data"
+
+  curl -X PUT -d "$avro_data" -H "Content-Type:application/json" -H "Authorization:$token" -H "Serialization-Type:Avro" "https://<Namespace_Name>.servicebus.windows.net/\$schemagroups/<SchemaGroup_Name>/schemas/$schema_name?api-version=2020-09-01-preview"
+done
+```
