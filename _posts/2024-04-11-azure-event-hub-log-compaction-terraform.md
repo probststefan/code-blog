@@ -84,3 +84,12 @@ resource "azurerm_resource_group_template_deployment" "eventhub" {
   TEMPLATE
 }
 ```
+
+To access the defined output variables, you can utilize the jsondecode function.
+
+```tf
+output "authorization_rule_primary_connection_string" {
+  value       = jsondecode(azurerm_resource_group_template_deployment.eventhub.output_content).defaultConnectionString.value
+  sensitive   = true
+}
+```
