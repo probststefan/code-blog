@@ -3,6 +3,10 @@ layout: post
 title: Set up Azure Event Hub with log compaction in terraform
 ---
 
+Enabling log compaction via the Terraform resource "[azurerm_eventhub](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/eventhub)" is currently not feasible. Additionally, a [bug](https://github.com/hashicorp/terraform-provider-azurerm/issues/25563) has been identified within "azurerm_eventhub_authorization_rule". Attempting to create an authorization rule encounters an issue when log compaction is enabled.
+
+That's why I transitioned to Azure ARM templates for deploying an Event Hub with both log compaction and authorization rules.
+
 ```bash
 resource "azurerm_resource_group" "resource_group" {
   name     = var.application_name
