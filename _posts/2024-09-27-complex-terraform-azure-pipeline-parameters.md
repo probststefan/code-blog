@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Terraform and Azure Pipelines: Handling Complex Variables
+title: Terraform and Azure Pipelines\: Handling Complex Variables
 ---
 
 In a recent project, I created a monitoring action group using Terraform and aimed to configure and execute it within an Azure pipeline. The defined variable is a list of objects with the keys `name` and `email_address`. Terraform expects this variable as json input and this is where the difficulty began.
