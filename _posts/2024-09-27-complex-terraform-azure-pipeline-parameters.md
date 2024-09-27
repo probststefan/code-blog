@@ -31,7 +31,7 @@ resource "azurerm_monitor_action_group" "monitoring_action_group" {
 
 Azure Pipelines allow parameters of type object, and therefore, complex types. To transform this into a usable JSON data structure, I am using an additional script step, in which the parameter is converted to JSON and written to a JSON file. The generated JSON file with the list of email receivers can then be used as a command option within the TerraformTaskV4@4.
 
-```yml
+~~~yml
 parameters:
   - name: alertEmails
     type: object
@@ -54,7 +54,7 @@ steps:
         -var environment=dev
         -var-file="terraform.tfvars.json"
       workingDirectory: $(terraform_working_dir)
-```
+~~~
 
 With this workaround, we can easily define a list of email receivers in our pipeline script.
 
