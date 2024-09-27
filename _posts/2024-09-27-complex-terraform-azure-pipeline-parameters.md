@@ -41,7 +41,7 @@ steps:
   - script: |
       echo "{\"email_addresses\": $ALERT_EMAILS_JSON}" > $(terraform_working_dir)/terraform.tfvars.json
     env:
-      ALERT_EMAILS_JSON: ${{ convertToJson(parameters.alertEmails) }}
+      ALERT_EMAILS_JSON: $\{{ convertToJson(parameters.alertEmails) }}
     displayName: Generate terraform.tfvars.json from parameters
   ...
   - task: TerraformTaskV4@4
