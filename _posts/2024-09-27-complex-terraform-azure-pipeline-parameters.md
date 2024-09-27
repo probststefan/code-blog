@@ -3,7 +3,7 @@ layout: post
 title: Use complex datatype from terraform variable in azure devops pipeline
 ---
 
-In a recent project, I created a monitoring action group using Terraform and aimed to configure and execute it within an Azure pipeline. The defined variable is a list of objects with the keys name and email_address. Terraform expects this variable as json input and this is where the difficulty began.
+In a recent project, I created a monitoring action group using Terraform and aimed to configure and execute it within an Azure pipeline. The defined variable is a list of objects with the keys `name` and `email_address`. Terraform expects this variable as json input and this is where the difficulty began.
 
 ```terraform
 variable "email_addresses" {
@@ -28,6 +28,8 @@ resource "azurerm_monitor_action_group" "monitoring_action_group" {
   }
 }
 ```
+
+Azure Pipelines allow parameters of type object, and therefore, complex types. To transform this into a usable JSON data structure, I am using an additional script step, in which the parameter is converted to JSON and written to a JSON file.
 
 ```yml
 parameters:
