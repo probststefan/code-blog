@@ -1,3 +1,8 @@
+---
+layout: post
+title: Use complex datatype from terraform variable in azure devops pipeline
+---
+
 ```terraform
 variable "email_addresses" {
   type = list(object({
