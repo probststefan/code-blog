@@ -1,7 +1,7 @@
 ---
 layout: plain
 title: Terms of use
-permalink: /immocat/privacy
+permalink: /immocat/terms
 ---
 
 # Terms of use
