@@ -20,7 +20,7 @@ By using Immocat, you consent to this privacy policy.
 
 Changes to this privacy policy may periodically be made and posted here. Visit this page at any time to check for updates.
 
-Stefan Probst
-Corkstr. 19
-51103 Köln
+Stefan Probst\
+Corkstr. 19\
+51103 Köln\
 probststefan@gmail.com
