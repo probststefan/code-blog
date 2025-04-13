@@ -4,6 +4,8 @@ title: Privacy Policy
 permalink: /immocat/privacy
 ---
 
+# Privacy Policy
+
 This policy applies to all information collected or submitted in Immocat for iPhone, Mac, iPad, and any other devices and platforms.
 
 I strongly believe that your data belongs to you. I do not collect any identifiable information about you and only track the bare minimum needed to debug issues and to view download and purchase trends.
