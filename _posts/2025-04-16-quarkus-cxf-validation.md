@@ -24,7 +24,6 @@ import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
 import org.apache.cxf.interceptor.Fault;
-import io.quarkus.logging.Log;
 
 public class DisableMessageValidationInterceptor extends AbstractPhaseInterceptor<Message>
 {
