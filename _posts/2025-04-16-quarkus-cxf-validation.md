@@ -35,11 +35,6 @@ public class DisableMessageValidationInterceptor extends AbstractPhaseIntercepto
 
     public void handleMessage(Message message) throws Fault
     {
-        // Disable JAXB validation by setting the validation event handler to false
-        // This prevents the JAXB unmarshaller from throwing exceptions for validation errors
-        // and allows processing of messages that don't strictly conform to the WSDL schema
-        // This is particularly important as the current SOAP API may add new fields without prior notification,
-        // which would cause validation errors in strict mode
         message.put("set-jaxb-validation-event-handler", "false");
     }
 }
@@ -59,3 +54,15 @@ To use this interceptor with your Quarkus CXF client, you need to register it in
 ```java
 quarkus.cxf.client."my-soap-client".in-interceptors=com.example.DisableMessageValidationInterceptor
 ```
+
+## Conclusion
+
+By implementing and registering this custom interceptor, you can effectively disable incoming message validation for your Quarkus CXF client. This can be a useful strategy when dealing with SOAP APIs that might evolve without strict adherence to the published WSDL.
+
+However, it's crucial to understand the implications of disabling validation:
+
+* You lose the guarantee that incoming messages strictly conform to the WSDL.
+* Your application might need to be more resilient and handle unexpected data or missing fields.
+* Disabling validation should be considered a temporary workaround. Ideally, you should strive to keep your client's WSDL and generated code up-to-date with the service definition.
+
+Use this technique judiciously and ensure your application is prepared to handle potentially non-compliant messages.
